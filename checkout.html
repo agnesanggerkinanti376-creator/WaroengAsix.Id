@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - WaroengAsix.Id</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Tambahan styling khusus form biar rapi mengikuti tema */
+    .order-box form label {
+        font-weight: bold;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 6px;
+        margin-top: 15px;
+    }
+    .order-box form input[type="text"],
+    .order-box form input[type="tel"],
+    .order-box form select,
+    .order-box form textarea,
+    .order-box form input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        background: #fafafa;
+        outline: none;
+        transition: 0.3s;
+    }
+    .order-box form input:focus,
+    .order-box form select:focus,
+    .order-box form textarea:focus {
+        border-color: #f26b38;
+        background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- HEADER & NAVIGASI -->
+    <header>
+        <div class="logo">Waroeng<span>Asix.Id</span></div>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="checkout.html" class="active">Pesanan</a>
+        </nav>
+    </header>
+
+    <!-- KONTROL UTAMA HALAMAN CHECKOUT -->
+    <main>
+        <div class="page-title">
+            <p>FORMULIR PEMESANAN</p>
+            <h1>Selesaikan Pesananmu</h1>
+        </div>
+
+        <div class="order-box">
+            <a href="index.html" style="text-decoration: none; color: #f26b38; font-weight: bold; display: inline-block; margin-bottom: 15px;">&larr; Kembali ke Beranda</a>
+
+            <form id="form-pemesanan" action="konfirmasi.html" method="get">
+
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama kamu" required>
+
+                <label for="nohp">Nomor HP / WhatsApp</label>
+                <input type="tel" id="nohp" name="nohp" placeholder="08xxxxxxxxxx" required>
+
+                <label for="alamat">Alamat Pengiriman</label>
+                <textarea id="alamat" name="alamat" rows="3" placeholder="Tulis alamat lengkap" required></textarea>
+
+                <label for="menu">Pilih Menu Utama</label>
+                <select id="menu" name="menu" required>
+                    <option value="">-- Pilih Menu Makanan --</option>
+                    <option value="Nasi Goreng Spesial">Nasi Goreng Spesial - Rp 15.000</option>
+                    <option value="Mie Goreng Telur">Mie Goreng Telur - Rp 12.000</option>
+                    <option value="Ayam Geprek Sambal Bawang">Ayam Geprek Sambal Bawang - Rp 18.000</option>
+                    <option value="Seblak Kuah Pedas">Seblak Kuah Pedas - Rp 15.000</option>
+                    <option value="Mie Ayam Spesial">Mie Ayam Spesial - Rp 13.000</option>
+                    <option value="Es Teh Manis">Es Teh Manis - Rp 5.000</option>
+                    <option value="Es Jeruk Peras">Es Jeruk Peras - Rp 6.000</option>
+                </select>
+
+                <label for="jumlah">Jumlah Porsi (Menu Utama)</label>
+                <input type="number" id="jumlah" name="jumlah" value="1" min="1" max="20" required>
+
+                <label for="catatan">Pesanan Tambahan / Catatan (Opsional)</label>
+                <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: Tambah Es Teh 2, Mie Ayam 2"></textarea>
+
+                <label style="margin-top: 20px;">Metode Pembayaran</label>
+                <div style="margin-top: 8px; line-height: 1.8;">
+                    <input type="radio" id="cod" name="pembayaran" value="COD" checked>
+                    <label for="cod" style="display:inline; font-weight:normal;"> Bayar di Tempat (COD)</label><br>
+
+                    <input type="radio" id="transfer" name="pembayaran" value="Transfer">
+                    <label for="transfer" style="display:inline; font-weight:normal;"> Transfer Bank (BCA: 1234-5678-90 a.n. WaroengAsix.Id)</label><br>
+
+                    <input type="radio" id="ewallet" name="pembayaran" value="E-Wallet">
+                    <label for="ewallet" style="display:inline; font-weight:normal;"> E-Wallet (DANA/OVO: 0812-3456-7890 a.n. WaroengAsix.Id)</label>
+                </div>
+
+                <br>
+                <button type="submit" id="btn-kirim" class="checkout" style="margin-top: 15px;">Kirim Pesanan</button>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kelompok 6 Pemrograman Web</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
