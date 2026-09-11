@@ -1,0 +1,225 @@
+/* =========================
+   RESET & GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comic Sans MS", "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+    background: #fffaf5;
+    color: #333;
+    min-height: 100vh;
+    font-weight: 500; /* Bikin ketebalan teks keseluruhan sedikit lebih padat */
+}
+
+/* Biar judul dan h1 makin tebal dan menonjol */
+h1, h2, h3, .logo {
+    font-weight: 800;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    width: 100%;
+    padding: 20px 8%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo span {
+    color: #f26b38;
+}
+
+header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* =========================
+   PAGE TITLE & MAIN
+========================= */
+main {
+    padding: 20px 0;
+}
+
+.page-title {
+    text-align: center;
+    padding: 40px 20px 30px;
+}
+
+.page-title p {
+    color: #f26b38;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.page-title h1 {
+    font-size: 30px;
+}
+
+/* =========================
+   MENU CONTAINER & CARD
+========================= */
+.menu-container {
+    width: 84%;
+    margin: auto;
+    padding-bottom: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Mengatur Foto agar Rapi, Seragam, & Tidak Raksasa */
+.food-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.food-card h3 {
+    font-size: 18px;
+    margin: 15px 15px 8px 15px;
+    color: #222;
+}
+
+.food-card > p {
+    color: #666;
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 0 15px 15px 15px;
+}
+
+/* Bagian Bawah Kartu (Harga & Tombol) */
+.food-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 18px 15px;
+}
+
+.harga {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f26b38;
+}
+
+.btn-pesan {
+    display: inline-block;
+    background: #f26b38;
+    color: white;
+    padding: 9px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13.5px;
+    transition: background 0.2s;
+}
+
+.btn-pesan:hover {
+    background: #d95525;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* =========================
+   PERBAIKAN HALAMAN CHECKOUT & FORM
+========================= */
+.order-box {
+    width: 600px;
+    max-width: 90%;
+    margin: 20px auto 60px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.order-box form label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.order-box form input[type="text"],
+.order-box form input[type="tel"],
+.order-box form input[type="number"],
+.order-box form select,
+.order-box form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.order-box form input:focus,
+.order-box form select:focus,
+.order-box form textarea:focus {
+    border-color: #f26b38;
+    background: #fff;
+}
+
+/* =========================
+   RESPONSIVE HP (MOBILE)
+========================= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 15px 5%;
+    }
+
+    .menu-container {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

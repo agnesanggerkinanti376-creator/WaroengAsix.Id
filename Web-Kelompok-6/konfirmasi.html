@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pesanan - WaroengAsix.Id</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Styling tambahan khusus box konfirmasi agar rapi */
+        .order-box p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #555;
+        }
+        .order-box strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & NAVIGASI -->
+    <header>
+        <div class="logo">Waroeng<span>Asix.Id</span></div>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="checkout.html">Pesanan</a>
+        </nav>
+    </header>
+
+    <!-- KONTEN UTAMA KONFIRMASI -->
+    <main>
+        <div class="page-title">
+            <p>STATUS PESANAN</p>
+            <h1>Pesanan Berhasil Dibuat!</h1>
+        </div>
+
+        <div class="order-box">
+            <p style="margin-bottom: 20px;">Terima kasih sudah memesan di WaroengAsix.Id. Berikut adalah rincian pesananmu:</p>
+
+            <div style="background: #fafafa; border: 1px solid #eee; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                <p><strong>Nama Pemesan:</strong> <span id="res-nama">Memuat...</span></p>
+                <p><strong>Nomor HP:</strong> <span id="res-nohp">Memuat...</span></p>
+                <p><strong>Alamat Pengiriman:</strong> <span id="res-alamat">Memuat...</span></p>
+                <p><strong>Menu Utama:</strong> <span id="res-menu">Memuat...</span></p>
+                <p><strong>Jumlah Porsi:</strong> <span id="res-jumlah">Memuat...</span></p>
+                <p style="margin-bottom: 0;"><strong>Metode Pembayaran:</strong> <span id="res-pembayaran">Memuat...</span></p>
+            </div>
+
+            <p id="info-bayar" style="color: #f26b38; font-weight: bold; margin-bottom: 20px;"></p>
+            
+            <div id="container-wa" style="margin-bottom: 15px; display: none;">
+                <a id="link-wa" href="#" target="_blank" class="checkout" style="text-decoration: none; text-align: center; background: #25d366; display: block; margin-bottom: 10px;">Kirim Bukti Transfer via WhatsApp</a>
+            </div>
+
+            <a href="index.html" class="checkout" style="text-decoration: none; text-align: center; background: #555; display: block;">Kembali ke Beranda</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kelompok 6 Pemrograman Web</p>
+    </footer>
+
+    <!-- SCRIPT PENANGKAP DATA URL & WHATSAPP -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const nama = urlParams.get('nama');
+        const nohp = urlParams.get('nohp');
+        const alamat = urlParams.get('alamat');
+        const menu = urlParams.get('menu');
+        const jumlah = urlParams.get('jumlah'); 
+        const catatan = urlParams.get('catatan'); 
+        const pembayaran = urlParams.get('pembayaran');
+
+        if (nama) {
+            document.getElementById('res-nama').innerText = nama;
+            document.getElementById('res-nohp').innerText = nohp;
+            document.getElementById('res-alamat').innerText = alamat;
+            document.getElementById('res-menu').innerText = menu;
+            document.getElementById('res-jumlah').innerText = jumlah ? jumlah + " porsi" : "1 porsi";
+            document.getElementById('res-pembayaran').innerText = pembayaran;
+
+            let infoBayarElem = document.getElementById('info-bayar');
+            let containerWa = document.getElementById('container-wa');
+            let linkWa = document.getElementById('link-wa');
+
+            const nomorAdminWhatsApp = "6283136096415"; 
+            
+            let pesanTeks = `Halo Min, saya ${nama} (${nohp}) memesan:\n- ${menu} (${jumlah} porsi)`;
+            if (catatan) {
+                pesanTeks += `\n- Tambahan: ${catatan}`;
+            }
+            pesanTeks += `\n\nPembayaran via: ${pembayaran}. Alamat: ${alamat}`;
+
+            if (pembayaran === "Transfer") {
+                infoBayarElem.innerText = "Silakan transfer ke rekening BCA: 1234-5678-90 a.n. WaroengAsix.Id, lalu kirim bukti transfer lewat tombol di bawah.";
+                containerWa.style.display = "block";
+                linkWa.href = `https://wa.me/${nomorAdminWhatsApp}?text=${encodeURIComponent(pesanTeks)}`;
+            } else if (pembayaran === "E-Wallet") {
+                infoBayarElem.innerText = "Silakan bayar via DANA/OVO ke nomor: 0812-3456-7890 a.n. WaroengAsix.Id, lalu kirim buktinya.";
+                containerWa.style.display = "block";
+                linkWa.href = `https://wa.me/${nomorAdminWhatsApp}?text=${encodeURIComponent(pesanTeks)}`;
+            } else {
+                infoBayarElem.innerText = "Pembayaran dilakukan secara tunai (COD) saat pesanan sampai.";
+                containerWa.style.display = "block";
+                linkWa.innerText = "Kirim Detail Pesanan ke WhatsApp";
+                linkWa.href = `https://wa.me/${nomorAdminWhatsApp}?text=${encodeURIComponent(pesanTeks)}`;
+            }
+        } else {
+            document.querySelector('.order-box').innerHTML = "<p style='color:red; text-align:center;'>Belum ada data pesanan. Silakan isi form dari halaman checkout terlebih dahulu!</p><br><a href='index.html' class='checkout' style='text-decoration: none; text-align: center; display: block;'>Kembali ke Beranda</a>";
+        }
+    </script>
+</body>
+</html>
